@@ -1,5 +1,6 @@
 package com.pdox.springsectest.service;
 
+import com.pdox.springsectest.models.UserPrincipal;
 import com.pdox.springsectest.models.Users;
 import com.pdox.springsectest.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,6 @@ public class MyUserDetailsService implements UserDetailsService {
             System.out.println("User not found");
             throw new UsernameNotFoundException("User not found");
         }
-        return;
+        return new UserPrincipal(user);
     }
 }
